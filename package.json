@@ -1,5 +1,5 @@
 {
-  "name": "@nhs/fhir-middy-error-handler",
+  "name": "nhs-eps-spine-client",
   "version": "1.0.0",
   "description": "A variant of the Middy Error Handler for use in a FHIR AWS lambda.",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NHSDigital/nhs-fhir-middy-error-handler.git"
+    "url": "git+https://github.com/NHSDigital/nhs-eps-spine-client.git"
   },
   "keywords": [],
   "author": "NHSDigital",
@@ -41,9 +41,9 @@
     "@middy/core": "^5.2.3"
   },
   "bugs": {
-    "url": "https://github.com/NHSDigital/nhs-fhir-middy-error-handler/issues"
+    "url": "https://github.com/NHSDigital/nhs-eps-spine-client/issues"
   },
-  "homepage": "https://github.com/NHSDigital/nhs-fhir-middy-error-handler#readme",
+  "homepage": "https://github.com/NHSDigital/nhs-eps-spine-client#readme",
   "files": [
     "lib"
   ],

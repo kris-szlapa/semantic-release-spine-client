@@ -2,7 +2,7 @@
 python = "^3.8"
 
 [tool.poetry]
-name = "nhs-fhir-middy-error-handler"
+name = "nhs-eps-spine-client"
 description = "A middy error handler for FHIR Lambdas"
 version = "0.0.1-alpha"
 authors = [
@@ -19,7 +19,7 @@ authors = [
 ]
 readme = "README.md"
 license = "MIT"
-repository = "https://github.com/NHSDigital/nhs-fhir-middy-error-handler"
+repository = "https://github.com/NHSDigital/nhs-eps-spine-client"
 
 [tool.poetry.dependencies]
 python = "^3.8"
