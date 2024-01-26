@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NHSDigital/nhs-eps-spine-client.git"
+    "url": "git+https://github.com/kris-szlapa/semantic-release-spine-client.git"
   },
   "keywords": [],
   "author": "NHSDigital",
