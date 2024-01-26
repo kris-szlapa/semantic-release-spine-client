@@ -18,7 +18,7 @@ RUN git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3; \
     echo '. $HOME/.asdf/asdf.sh' >> ~/.bashrc; \
     echo '. $HOME/.asdf/completions/asdf.bash' >> ~/.bashrc;
 
-ENV PATH="$PATH:/home/vscode/.asdf/bin/:/workspaces/nhs-fhir-middy-error-handler/node_modules/.bin"
+ENV PATH="$PATH:/home/vscode/.asdf/bin/:/workspaces/nhs-eps-spine-client/node_modules/.bin"
 
 # Install ASDF plugins
 RUN asdf plugin add python; \
@@ -27,8 +27,8 @@ RUN asdf plugin add python; \
     asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git; \
     asdf plugin-add direnv;
 
-WORKDIR /workspaces/nhs-fhir-middy-error-handler
-ADD .tool-versions /workspaces/nhs-fhir-middy-error-handler/.tool-versions
+WORKDIR /workspaces/nhs-eps-spine-client
+ADD .tool-versions /workspaces/nhs-eps-spine-client/.tool-versions
 ADD .tool-versions /home/vscode/.tool-versions
 
 RUN asdf install; \
