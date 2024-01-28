@@ -68,7 +68,7 @@ You can cache the gpg key passphrase by following instructions at <https://super
 The GitHub Actions require a secret to exist on the repo called "SONAR_TOKEN".
 This can be obtained from [SonarCloud](https://sonarcloud.io/)
 as described [here](https://docs.sonarsource.com/sonarqube/latest/user-guide/user-account/generating-and-using-tokens/).
-You will need the "Execute Analysis" permission for the project (NHSDigital_nhs-eps-spine-client)  in order for the token to work.
+You will need the "Execute Analysis" permission for the project (NHSDigital_nhs-eps-spine-client) in order for the token to work.
 
 ### Pre-commit hooks
 
@@ -114,6 +114,12 @@ Workflows are in the .github/workflows folder
 - `combine-dependabot-prs.yml`: Workflow for combining dependabot pull requests. Runs on demand
 - `dependabot_auto_approve_and_merge.yml`: Workflow to auto merge dependabot updates
 - `pr-link.yaml`: This workflow template links Pull Requests to Jira tickets and runs when a pull request is opened
+- `pr_title_check.yml`: Workflow to check the format of a pull request is compliant with the project standards. See [guidelines for contribution](./CONTRIBUTING.md) for details
 - `pull_request.yml`: Called when pull request is opened or updated. Runs quality_checks.yml
 - `quality_checks.yml`: Workflow verifies and enhances code quality through setup, dependencies, checks, and SonarCloud scanning
 - `release.yml`: Run when code is merged to main branch or a tag starting v is pushed. Calls quality_checks.yml
+- `rename_dependabot_prs.yml`: Renames dependabot pull requests to comply with project standards
+
+### Running a Release
+
+Details of running the release can be found in [RELEASE.md](./RELEASE.md)

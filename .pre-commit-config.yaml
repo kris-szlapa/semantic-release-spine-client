@@ -23,8 +23,8 @@ repos:
 
   - repo: local
     hooks:
-      - id: lint-middy-error-handler
-        name: Lint middy-error-handler
+      - id: lint-nhs-eps-spine-client
+        name: Lint nhs-eps-spine-client
         entry: make
         args: ["lint-node"]
         language: system
