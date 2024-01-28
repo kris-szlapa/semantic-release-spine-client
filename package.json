@@ -16,9 +16,6 @@
   "author": "NHSDigital",
   "license": "MIT",
   "private": false,
-  "publishConfig": {
-    "access": "public"
-  },
   "type": "module",
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
@@ -49,5 +46,15 @@
   "files": [
     "lib"
   ],
-  "main": "lib/index.js"
+  "main": "lib/index.js",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "release": {
+    "branches": [
+      {
+        "name": "main"
+      }
+    ]
+  }
 }
