@@ -49,12 +49,5 @@
   "main": "lib/index.js",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
-  },
-  "release": {
-    "branches": [
-      {
-        "name": "main"
-      }
-    ]
   }
 }
