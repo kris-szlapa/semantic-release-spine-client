@@ -62,6 +62,9 @@
       }
     ],
     [
+      "semantic-release-export-data"
+    ],
+    [
       "@semantic-release/exec",
       {
         "publishCmd": "./scripts/publish.sh ${nextRelease.version}"
