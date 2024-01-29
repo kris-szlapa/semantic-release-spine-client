@@ -1,4 +1,4 @@
-name: Release GitHub Package 2
+name: Release GitHub Package 4
 
 on:
   workflow_dispatch:
@@ -33,9 +33,10 @@ jobs:
         run: npm install -g semantic-release
 
       - name: Configure Git
-        run: git config --global user.email "actions@github.com" && git config --global user.name "GitHub Actions"
+        run: git config --global user.email "kris-szlapa@github.com" && git config --global user.name "Kris Szlapa"
 
       - name: Semantic Release
         env:
-          GH_TOKEN: ${{secrets.GH_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx semantic-release
