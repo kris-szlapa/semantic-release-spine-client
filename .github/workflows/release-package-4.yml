@@ -46,7 +46,7 @@ jobs:
       # Add the following steps for publishing the public GitHub package
       - name: Publish to GitHub Package Registry
         run: |
-          echo "//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}" > ~/.npmrc
+          echo "//npm.pkg.github.com/:_authToken=\${NODE_AUTH_TOKEN}" > ~/.npmrc
           echo "@kris-szlapa:registry=https://npm.pkg.github.com" >> ~/.npmrc
           npm publish --access public
 
