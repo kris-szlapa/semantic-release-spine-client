@@ -1,4 +1,4 @@
-name: Release GitHub Package 5
+name: Release GitHub Package 4
 
 on:
   workflow_dispatch:
