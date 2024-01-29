@@ -1,0 +1,41 @@
+name: Release GitHub Package 2
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm test
+
+  publish-gpr:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          registry-url: https://npm.pkg.github.com/
+      - run: npm ci
+
+      # Add semantic-release steps
+      - name: Install semantic-release
+        run: npm install -g semantic-release
+
+      - name: Configure Git
+        run: git config --global user.email "actions@github.com" && git config --global user.name "GitHub Actions"
+
+      - name: Semantic Release
+        env:
+          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        run: npx semantic-release

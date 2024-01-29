@@ -1,4 +1,4 @@
-name: Release GitHub Package
+name: Release GitHub Package 3
 
 on:
   workflow_dispatch:
@@ -27,6 +27,15 @@ jobs:
           node-version: 20
           registry-url: https://npm.pkg.github.com/
       - run: npm ci
-      - run: npm publish
+
+      # Add semantic-release steps
+      - name: Install semantic-release
+        run: npm install -g semantic-release
+
+      - name: Configure Git
+        run: git config --global user.email "kris-szlapa@github.com" && git config --global user.name "Kris Szlapa"
+
+      - name: Semantic Release
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        run: npx semantic-release
