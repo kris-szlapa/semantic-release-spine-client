@@ -54,6 +54,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          # Publish GitHub releases
+          npx semantic-release
+
           VERSION_SPACES=$(npx semantic-release --dryRun | grep -oP 'Published release \K.*? ')
           VERSION="${VERSION_SPACES// /}"
           echo "Next Version: $VERSION"
@@ -64,6 +67,3 @@ jobs:
           else
             npm publish --access public
           fi
-
-          # Publish GitHub releases
-          npx semantic-release
