@@ -13,7 +13,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 20
       - uses: volta-cli/action@v4
       - run: npm ci
       - run: npx semantic-release --dry-run
@@ -39,7 +39,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 20
           registry-url: https://npm.pkg.github.com/
       - run: npm ci
       - run: npm publish --tag ${{ needs.get-next-version.outputs.new-release-version }}
