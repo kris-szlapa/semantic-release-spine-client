@@ -64,7 +64,7 @@
     [
       "@semantic-release/exec",
       {
-        "publishCmd": "./publish.sh ${nextRelease.version} ${branch.name} ${commits.length} ${Date.now()}"
+        "publishCmd": "./scripts/publish.sh ${nextRelease.version}"
       }
     ],
     [
