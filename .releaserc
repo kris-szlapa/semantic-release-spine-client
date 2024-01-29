@@ -74,16 +74,6 @@
         "failComment": false,
         "failTitle": false
       }
-    ],
-    [
-      "@semantic-release/git",
-      {
-        "assets": [
-          "package.json",
-          "package-lock.json"
-        ],
-        "message": "chore(release): cut the ${nextRelease.version} release\n\n${nextRelease.notes}"
-      }
     ]
   ]
 }
