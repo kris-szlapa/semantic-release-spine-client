@@ -48,8 +48,11 @@
   ],
   "main": "lib/index.js",
   "publishConfig": {
-    "@kris-szlapa/registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com/kris-szlapa"
   },
+  "branches": [
+    "main"
+  ],
   "plugins": [
     [
       "@semantic-release/commit-analyzer",
