@@ -28,10 +28,8 @@ jobs:
 
   release:
     runs-on: ubuntu-latest
-
     needs: get-next-version
     if: needs.get-next-version.outputs.new-release-published == 'true'
-
     steps:
       - run: echo "The new release version is ${{ needs.get-next-version.outputs.new-release-version }}"
       - uses: actions/checkout@v3
@@ -43,14 +41,18 @@ jobs:
       - uses: volta-cli/action@v4
       - run: npm ci
 
-      # Add the following steps for publishing the public GitHub package
+      # Add the following lines for debugging
+      - run: |
+          echo "Token: ${{ secrets.GITHUB_TOKEN }}"
+          echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" > ~/.npmrc
+
+      # Continue with publishing and semantic-release
       - name: Publish to GitHub Package Registry
         run: |
-          echo "//npm.pkg.github.com/:_authToken=\${NODE_AUTH_TOKEN}" > ~/.npmrc
-          echo "@kris-szlapa:registry=https://npm.pkg.github.com" >> ~/.npmrc
           npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # Continue with semantic-release
       - run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
