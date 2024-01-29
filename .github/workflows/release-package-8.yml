@@ -1,8 +1,7 @@
 name: Release GitHub Package 8
+
 on:
-  push:
-    branches:
-      - master
+  workflow_dispatch:
 
 permissions:
   contents: read # for checkout
