@@ -56,7 +56,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npx semantic-release --ci false --dryRun | tee /dev/tty | grep -i "Published release" > .semver-output
+          npx semantic-release --ci false --dryRun | tee /dev/null | grep -i "Published release" > .semver-output
           export LATEST_VERSION=$([[ $(cat .semver-output) =~ .*([[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+) ]] && echo ${BASH_REMATCH[1]})
 
           # Publish to npm
