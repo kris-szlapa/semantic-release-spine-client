@@ -1,6 +1,6 @@
 {
   "name": "nhs-eps-spine-client",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "The code to invoke the Spine client",
   "scripts": {
     "build": "tsc",
@@ -16,9 +16,6 @@
   "author": "NHSDigital",
   "license": "MIT",
   "private": false,
-  "publishConfig": {
-    "access": "public"
-  },
   "type": "module",
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
@@ -49,5 +46,36 @@
   "files": [
     "lib"
   ],
-  "main": "lib/index.js"
+  "main": "lib/index.js",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/kris-szlapa"
+  },
+  "branches": [
+    "main"
+  ],
+  "plugins": [
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "preset": "eslint",
+        "releaseRules": [
+          {
+            "tag": "Docs",
+            "message": "*README*",
+            "release": "patch"
+          },
+          {
+            "type": "Fix",
+            "release": "patch"
+          },
+          {
+            "tag": "New",
+            "release": "patch"
+          }
+        ]
+      }
+    ],
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/github"
+  ]
 }
