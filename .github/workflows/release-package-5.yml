@@ -57,4 +57,10 @@ jobs:
           VERSION_SPACES=$(npx semantic-release --dryRun | grep -oP 'Published release \K.*? ')
           VERSION="${VERSION_SPACES// /}"
           echo "Next Version: $VERSION"
-          npm publish --tag $VERSION --access public
+
+          # Check if the version is a prerelease version
+          if [[ $VERSION =~ .*-.* ]]; then
+            npm publish --tag next --access public
+          else
+            npm publish --access public
+          fi
