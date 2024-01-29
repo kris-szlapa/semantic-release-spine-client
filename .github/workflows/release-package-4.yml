@@ -42,6 +42,15 @@ jobs:
           node-version: 20
       - uses: volta-cli/action@v4
       - run: npm ci
+
+      # Add the following steps for publishing the public GitHub package
+      - name: Publish to GitHub Package Registry
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}" > ~/.npmrc
+          echo "@kris-szlapa:registry=https://npm.pkg.github.com" >> ~/.npmrc
+          npm publish --access public
+
+      # Continue with semantic-release
       - run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
