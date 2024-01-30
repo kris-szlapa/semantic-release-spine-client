@@ -2,12 +2,7 @@ import {Logger} from "@aws-lambda-powertools/logger"
 import {serviceHealthCheck} from "./status"
 import {SpineClient, SpineStatus} from "./spine-client"
 import {Agent} from "https"
-import axios, {Axios, AxiosRequestConfig, AxiosResponse} from "axios"
-import {APIGatewayProxyEventHeaders} from "aws-lambda"
-import {extractNHSNumber} from "./extractNHSNumber"
-
-// timeout in ms to wait for response from spine to avoid lambda timeout
-const SPINE_TIMEOUT = 45000
+import axios, {Axios, AxiosRequestConfig} from "axios"
 
 export class LiveSpineClient implements SpineClient {
   private readonly SPINE_URL_SCHEME = "https"
@@ -48,85 +43,6 @@ export class LiveSpineClient implements SpineClient {
       return Promise.reject(error)
     })
 
-  }
-  async getPrescriptions(inboundHeaders: APIGatewayProxyEventHeaders): Promise<AxiosResponse> {
-    try {
-      const address = this.getSpineEndpoint("mm/patientfacingprescriptions")
-      // nhsd-nhslogin-user looks like P9:9912003071
-      const nhsNumber = extractNHSNumber(inboundHeaders["nhsd-nhslogin-user"])
-      this.logger.info(`nhsNumber: ${nhsNumber}`)
-
-      const outboundHeaders = {
-        Accept: "application/json",
-        "Spine-From-Asid": this.spineASID,
-        "nhsd-party-key": this.spinePartyKey,
-        nhsNumber: nhsNumber,
-        "nhsd-correlation-id": inboundHeaders["nhsd-correlation-id"],
-        "nhsd-nhslogin-user": inboundHeaders["nhsd-nhslogin-user"],
-        "x-request-id": inboundHeaders["x-request-id"],
-        "x-correlation-id": inboundHeaders["x-correlation-id"],
-        "nhsd-request-id": inboundHeaders["nhsd-request-id"]
-      }
-
-      const queryParams = {
-        format: "trace-summary"
-      }
-      this.logger.info(`making request to ${address}`)
-      const response = await this.axiosInstance.get(address, {
-        headers: outboundHeaders,
-        params: queryParams,
-        httpsAgent: this.httpsAgent,
-        timeout: SPINE_TIMEOUT
-      })
-
-      // This can be removed when https://nhsd-jira.digital.nhs.uk/browse/AEA-3448 is complete
-      if (
-        response.data["statusCode"] !== undefined &&
-        response.data["statusCode"] !== "1" &&
-        response.data["statusCode"] !== "0"
-      ) {
-        this.logger.error("Unsuccessful status code response from spine", {
-          response: {
-            data: response.data,
-            status: response.status,
-            Headers: response.headers
-          }
-        })
-        throw new Error("Unsuccessful status code response from spine")
-      }
-      return response
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        if (error.response) {
-          this.logger.error("error in response from spine", {
-            response: {
-              data: error.response.data,
-              status: error.response.status,
-              Headers: error.response.headers
-            },
-            request: {
-              method: error.request?.path,
-              params: error.request?.params,
-              headers: error.request?.headers,
-              host: error.request?.host
-            }
-          })
-        } else if (error.request) {
-          this.logger.error("error in request to spine", {
-            method: error.request.method,
-            path: error.request.path,
-            params: error.request.params,
-            headers: error.request.headers,
-            host: error.request.host
-          })
-        } else {
-          this.logger.error("general error calling spine", {error})
-        }
-      } else {
-        this.logger.error("general error", {error})
-      }
-      throw error
-    }
   }
 
   private getSpineEndpoint(requestPath?: string) {

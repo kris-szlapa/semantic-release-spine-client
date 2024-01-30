@@ -26,7 +26,7 @@ repos:
       - id: lint-nhs-eps-spine-client
         name: Lint nhs-eps-spine-client
         entry: make
-        args: ["lint-node"]
+        args: ["lint"]
         language: system
         files: ^src
         pass_filenames: false
