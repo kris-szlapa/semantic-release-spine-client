@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - uses: actions/setup-node@v3
@@ -34,7 +34,7 @@ jobs:
     steps:
       - run: echo "The new release version is ${{ needs.get-next-version.outputs.new-release-version }}"
       - run: echo "The new published version is ${{ needs.get-next-version.outputs.new-release-published }}"
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - uses: actions/setup-node@v3
@@ -54,7 +54,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 

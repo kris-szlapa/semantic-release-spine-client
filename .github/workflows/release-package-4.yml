@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - uses: actions/setup-node@v3
@@ -32,7 +32,7 @@ jobs:
     if: needs.get-next-version.outputs.new-release-published == 'true'
     steps:
       - run: echo "The new release version is ${{ needs.get-next-version.outputs.new-release-version }}"
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - uses: actions/setup-node@v3
