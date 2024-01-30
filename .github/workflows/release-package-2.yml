@@ -61,6 +61,11 @@ jobs:
 
           echo $LATEST_VERSION
 
+          # Set Git user email and name
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
+
           # Publish to npm
           npm version $LATEST_VERSION
           npm publish --tag latest --access public
+        shell: /usr/bin/bash -e {0}
