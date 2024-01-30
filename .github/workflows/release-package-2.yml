@@ -59,5 +59,7 @@ jobs:
           npx semantic-release --ci false --dryRun | tee /dev/null | grep -i "Published release" > .semver-output
           export LATEST_VERSION=$([[ $(cat .semver-output) =~ .*([[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+) ]] && echo ${BASH_REMATCH[1]})
 
+          echo $LATEST_VERSION
+
           # Publish to npm
-          npm publish --tag $LATEST_VERSION
+          npm publish --tag latest --access public
