@@ -11,9 +11,13 @@ This repository encompasses the code for invoking the Spine client, designed for
 ### Usage
 
 To integrate this into your project, install the package using the following:
-
+- command line: 
 ```bash
-# TODO: Update this once package is published
+npm install @nhs/eps-spine-client
+```
+- package.json: 
+```
+"@nhs/eps-spine-client": "latest"
 ```
 
 ## Project Structure
