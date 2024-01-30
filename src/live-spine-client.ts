@@ -4,7 +4,6 @@ import {SpineClient, SpineStatus} from "./spine-client"
 import {Agent} from "https"
 import axios, {Axios, AxiosRequestConfig, AxiosResponse} from "axios"
 import {APIGatewayProxyEventHeaders} from "aws-lambda"
-import {extractNHSNumber} from "./extractNHSNumber"
 
 // timeout in ms to wait for response from spine to avoid lambda timeout
 const SPINE_TIMEOUT = 45000
@@ -53,14 +52,12 @@ export class LiveSpineClient implements SpineClient {
     try {
       const address = this.getSpineEndpoint("mm/patientfacingprescriptions")
       // nhsd-nhslogin-user looks like P9:9912003071
-      const nhsNumber = extractNHSNumber(inboundHeaders["nhsd-nhslogin-user"])
-      this.logger.info(`nhsNumber: ${nhsNumber}`)
 
       const outboundHeaders = {
         Accept: "application/json",
         "Spine-From-Asid": this.spineASID,
         "nhsd-party-key": this.spinePartyKey,
-        nhsNumber: nhsNumber,
+        nhsNumber: inboundHeaders["nhsNumber"],
         "nhsd-correlation-id": inboundHeaders["nhsd-correlation-id"],
         "nhsd-nhslogin-user": inboundHeaders["nhsd-nhslogin-user"],
         "x-request-id": inboundHeaders["x-request-id"],
