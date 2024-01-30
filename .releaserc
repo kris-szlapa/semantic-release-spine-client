@@ -74,13 +74,6 @@
         "failComment": false,
         "failTitle": false
       }
-    ],
-    [
-      "@semantic-release/exec",
-      {
-        "prepareCmd": "npm version ${nextRelease.version} && npm run build",
-        "publishCmd": "npm publish --tag latest --access public"
-      }
     ]
   ]
 }
