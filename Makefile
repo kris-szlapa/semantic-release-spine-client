@@ -2,28 +2,22 @@ default: deep-clean install lint check-licenses build test
 
 install: install-python install-hooks install-node
 
-install-node:
-	npm ci
-
 install-python:
 	poetry install
 
 install-hooks:
 	poetry run pre-commit install --install-hooks --overwrite
 
-build: build-node
+install-node:
+	npm ci
 
-build-node:
+build:
 	npm run build
 
-lint: lint-node
-
-lint-node:
+lint:
 	npm run lint
 
-test: test-node
-
-test-node: build-node
+test: build
 	npm run test
 
 clean:
@@ -39,6 +33,6 @@ check-licenses: check-licenses-node check-licenses-python
 
 check-licenses-node:
 	npm run check-licenses
-	
+
 check-licenses-python:
 	scripts/check_python_licenses.sh
