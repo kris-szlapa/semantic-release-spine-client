@@ -1,8 +1,6 @@
 import {Logger} from "@aws-lambda-powertools/logger"
 import {LiveSpineClient} from "./live-spine-client"
 import {SandboxSpineClient} from "./sandbox-spine-client"
-import {APIGatewayProxyEventHeaders} from "aws-lambda"
-import {AxiosResponse} from "axios"
 import {StatusCheckResponse} from "./status"
 
 export interface SpineStatus {
@@ -13,7 +11,6 @@ export interface SpineStatus {
 
 export interface SpineClient {
   getStatus(): Promise<SpineStatus>
-  getPrescriptions(inboundHeaders: APIGatewayProxyEventHeaders): Promise<AxiosResponse>
   isCertificateConfigured(): boolean
 }
 
