@@ -62,4 +62,5 @@ jobs:
           echo $LATEST_VERSION
 
           # Publish to npm
+          npm version $LATEST_VERSION
           npm publish --tag latest --access public
