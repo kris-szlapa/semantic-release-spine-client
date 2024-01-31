@@ -14,8 +14,13 @@ install-node:
 build:
 	npm run build
 
-lint:
+lint: lint-node lint-githubactions
+
+lint-node:
 	npm run lint
+
+lint-githubactions:
+	actionlint
 
 test: build
 	npm run test

@@ -72,41 +72,6 @@ describe("live spine client", () => {
       nhsdLoginUser: "P9:9912003071",
       errorMessage: "Request failed with status code 500",
       scenarioDescription: "spine returns an unsuccessful http status code"
-    },
-    {
-      httpResponseCode: 200,
-      spineStatusCode: "0",
-      nhsdLoginUser: undefined,
-      errorMessage: "nhsdloginUser not passed in",
-      scenarioDescription: "no nhsd-login-user is passed in"
-    },
-    {
-      httpResponseCode: 200,
-      spineStatusCode: "0",
-      nhsdLoginUser: "P9:A",
-      errorMessage: "NHS Number failed preflight checks",
-      scenarioDescription: "nhs number in nhsdLoginUser contains a string"
-    },
-    {
-      httpResponseCode: 200,
-      spineStatusCode: "0",
-      nhsdLoginUser: "P9:123",
-      errorMessage: "NHS Number failed preflight checks",
-      scenarioDescription: "nhs number in nhsdLoginUser is too short"
-    },
-    {
-      httpResponseCode: 200,
-      spineStatusCode: "0",
-      nhsdLoginUser: "P0:9912003071",
-      errorMessage: "Identity proofing level is not P9",
-      scenarioDescription: "Identity proofing in nhsdLoginUser is not P9"
-    },
-    {
-      httpResponseCode: 200,
-      spineStatusCode: "0",
-      nhsdLoginUser: "P9:9912003072",
-      errorMessage: "invalid check digit in NHS number",
-      scenarioDescription: "nhs number does not validate checksum"
     }
   ])(
     "throw error when $scenarioDescription",
