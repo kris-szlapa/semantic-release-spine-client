@@ -17,7 +17,7 @@
   "license": "MIT",
   "private": false,
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "@kris-szlapa/registry": "https://npm.pkg.github.com"
   },
   "type": "module",
   "devDependencies": {
