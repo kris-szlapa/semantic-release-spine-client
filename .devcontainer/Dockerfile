@@ -25,7 +25,8 @@ RUN asdf plugin add python; \
     asdf plugin add poetry https://github.com/asdf-community/asdf-poetry.git; \
     asdf plugin add shellcheck https://github.com/luizm/asdf-shellcheck.git; \
     asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git; \
-    asdf plugin-add direnv;
+    asdf plugin-add direnv; \
+    asdf plugin add actionlint;
 
 WORKDIR /workspaces/nhs-eps-spine-client
 ADD .tool-versions /workspaces/nhs-eps-spine-client/.tool-versions
