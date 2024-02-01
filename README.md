@@ -1,8 +1,8 @@
 # NHS EPS Spine Client
 
-![Build](https://github.com/NHSDigital/nhs-eps-spine-client/workflows/release/badge.svg?branch=main)
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=NHSDigital_nhs-eps-spine-client)](https://sonarcloud.io/summary/new_code?id=NHSDigital_nhs-eps-spine-client)
 
-This repository contains the code to invoke the Spine client, utilised in <https://github.com/NHSDigital/prescriptionsforpatients>.
+This repository contains the code to invoke the Spine client, utilised in <https://github.com/NHSDigital/prescriptionsforpatients>
 
 ## Functionality
 
@@ -11,20 +11,24 @@ This repository encompasses the code for invoking the Spine client, designed for
 ### Usage
 
 To integrate this into your project, install the package using the following:
-- command line: 
+
+- command line
+
 ```bash
-npm install @nhs/eps-spine-client
+npm install @NHSDigital/eps-spine-client
 ```
-- package.json: 
+
+- package.json
+
 ```
-"@nhs/eps-spine-client": "latest"
+"@NHSDigital/eps-spine-client": "latest"
 ```
 
 ## Project Structure
 
 - `.devcontainer` Contains a dockerfile and vscode devcontainer definition
 - `.github` Contains github workflows that are used for building and deploying from pull requests and releases
-- `scripts` Useful scripts
+- `scripts` Contains a script for checking Python licenses
 - `src` Contains the source code for the project
 - `tests` Contains the tests for the project
 
@@ -110,19 +114,19 @@ There are `make` commands that are run as part of the CI pipeline and help alias
 
 This .github folder contains workflows and templates related to github
 
-- `pull_request_template.yml`: Template for pull requests
-- `dependabot.yml`: Dependabot definition file
+- `dependabot.yml` Dependabot definition file
+- `pull_request_template.yml` Template for pull requests
 
 Workflows are in the .github/workflows folder
 
-- `combine-dependabot-prs.yml`: Workflow for combining dependabot pull requests. Runs on demand
-- `dependabot_auto_approve_and_merge.yml`: Workflow to auto merge dependabot updates
-- `pr-link.yaml`: This workflow template links Pull Requests to Jira tickets and runs when a pull request is opened
-- `pr_title_check.yml`: Workflow to check the format of a pull request is compliant with the project standards. See [guidelines for contribution](./CONTRIBUTING.md) for details
-- `pull_request.yml`: Called when pull request is opened or updated. Runs quality_checks.yml
-- `quality_checks.yml`: Workflow verifies and enhances code quality through setup, dependencies, checks, and SonarCloud scanning
-- `release.yml`: Run when code is merged to main branch or a tag starting v is pushed. Calls quality_checks.yml
-- `rename_dependabot_prs.yml`: Renames dependabot pull requests to comply with project standards
+- `combine-dependabot-prs.yml` Workflow for combining dependabot pull requests. Runs on demand
+- `dependabot_auto_approve_and_merge.yml` Workflow to auto merge dependabot updates
+- `pr-link.yaml` This workflow template links Pull Requests to Jira tickets and runs when a pull request is opened
+- `pr_title_check.yml` Workflow to check the format of a pull request is compliant with the project standards. See [guidelines for contribution](./CONTRIBUTING.md) for details
+- `pull_request.yml` Called when pull request is opened or updated. Runs quality_checks.yml
+- `quality_checks.yml` Workflow verifies and enhances code quality through setup, dependencies, checks, and SonarCloud scanning
+- `release.yml` Run when code is merged to main branch or a tag starting v is pushed. Calls quality_checks.yml
+- `rename_dependabot_prs.yml` Renames dependabot pull requests to comply with project standards
 
 ### Running a Release
 
