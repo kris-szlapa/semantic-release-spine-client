@@ -1,7 +1,7 @@
 # NHS EPS Spine Client
 
 [![Release to GitHub Packages](https://github.com/kris-szlapa/semantic-release-spine-client/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/kris-szlapa/semantic-release-spine-client/actions/workflows/release.yml)
-[![package version](https://badge.fury.io/js/@kris-szlapa%2Feps-spine-client.svg)](https://badge.fury.io/js/@kris-szlapa%2Feps-spine-client)
+[![package version](https://badge.fury.io/js/@kris-szlapa%2Feps-spine-client.svg)](https://github.com/kris-szlapa/semantic-release-spine-client/pkgs/npm/eps-spine-client)
 [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=NHSDigital_nhs-eps-spine-client)](https://sonarcloud.io/summary/new_code?id=NHSDigital_nhs-eps-spine-client)
 
 This repository contains the code to invoke the Spine client, utilised in <https://github.com/NHSDigital/prescriptionsforpatients>
