@@ -6,6 +6,7 @@
     "target": "es2020",
     "module": "ES2020",
     "declaration": true,
+    "declarationMap": true,
     "sourceMap": true,
     "composite": true,
     "moduleResolution": "node",
